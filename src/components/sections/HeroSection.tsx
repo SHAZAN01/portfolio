@@ -80,7 +80,7 @@ export function HeroSection() {
         </div>
 
         {/* Main layout */}
-        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 260px", gap: isMobile ? 24 : 60, alignItems: isMobile ? "start" : "center", marginBottom: isMobile ? 28 : 52 }}>
+        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 110px" : "1fr 260px", gap: isMobile ? 16 : 60, alignItems: "start", marginBottom: isMobile ? 28 : 52 }}>
 
           <div>
             {/* Name */}
