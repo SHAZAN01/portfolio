@@ -35,7 +35,7 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" style={{ padding: `${isMobile ? 56 : 72}px ${isMobile ? 20 : 40}px`, maxWidth: 1060, margin: "0 auto", width: "100%" }}>
+    <section id="contact" style={{ padding: isMobile ? '56px 20px' : '72px 40px', maxWidth: 1060, margin: "0 auto", width: "100%" }}>
       <FadeUp>
 
         {/* Top row: heading + photo */}

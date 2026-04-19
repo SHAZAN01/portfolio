@@ -6,7 +6,7 @@ import { experiences } from "@/data/experience"
 export function ExperienceSection() {
   const isMobile = useIsMobile()
   return (
-    <section id="experience" style={{ padding: `${isMobile ? 56 : 72}px ${isMobile ? 20 : 40}px`, maxWidth: 1060, margin: "0 auto", width: "100%" }}>
+    <section id="experience" style={{ padding: isMobile ? '56px 20px' : '72px 40px', maxWidth: 1060, margin: "0 auto", width: "100%" }}>
       <FadeUp>
         <p style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: "0.18em", color: "rgba(242,242,247,0.3)", marginBottom: 14, fontFamily: "-apple-system, BlinkMacSystemFont, sans-serif" }}>Experience</p>
         <h2 style={{ fontFamily: "-apple-system, BlinkMacSystemFont, SF Pro Display, Helvetica Neue, sans-serif", fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 300, letterSpacing: "-0.03em", lineHeight: 1.08, marginBottom: 48 }}>
