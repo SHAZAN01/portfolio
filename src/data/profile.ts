@@ -1,0 +1,30 @@
+export const profile = {
+  name: "Shazan Ansar Mohammed",
+  initials: "SAM",
+  title: "AI/ML & Data Engineer",
+  tagline: "Building intelligent systems that work in the real world.",
+  bio: [
+    "I'm a Data and Machine Learning Engineer based in California, specializing in end-to-end ML pipelines, multilingual NLP systems, and production-grade data platforms.",
+    "Currently completing my M.S. in Computer Science at Cal State Dominguez Hills (GPA: 4.0), where I co-authored a peer-reviewed paper at RANLP 2025 on clinical NLP translation.",
+    "Actively seeking full-time roles in AI Engineering, ML Engineering, Data Science, or Data Engineering — anywhere I can ship systems with real impact.",
+  ],
+  location: "California, US",
+  email: "shazanansar@gmail.com",
+  phone: "+1 747-352-9855",
+  photo: "/images/profile.jpg",
+  resumeUrl: "/resume.pdf",
+  openToWork: true,
+  targetRoles: [
+    "AI Engineer","ML Engineer","Data Scientist","Data Engineer",
+    "MLOps Engineer","Applied Scientist","DevOps Engineer",
+    "NLP Researcher","Future PhD Candidate",
+  ],
+  social: {
+    linkedin: "https://www.linkedin.com/in/shazan-ansar/",
+    github: "https://github.com/SHAZAN01",
+    medium: "https://medium.com/@shazanansar",
+    instagram: "https://instagram.com/shazan_ansar",
+    discord: "insightshazan",
+    email: "mailto:shazanansar@gmail.com",
+  },
+} as const
