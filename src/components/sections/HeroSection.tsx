@@ -58,106 +58,159 @@ export function HeroSection() {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" })
 
   return (
-    <section id="hero" style={{ position: "relative", minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", paddingTop: isMobile ? 100 : 130, paddingBottom: isMobile ? 60 : 80, overflow: "hidden" }}>
+    <section id="hero" style={{ position: "relative", minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", paddingTop: isMobile ? 90 : 130, paddingBottom: 60, overflow: "hidden" }}>
 
+      {/* Banner bg */}
       <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
         <Image src="/images/banner.jpg" alt="" fill priority style={{ objectFit: "cover", objectPosition: "center top", opacity: 0.2 }} />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg,rgba(5,5,8,0.88) 0%,rgba(5,5,8,0.92) 60%,rgba(5,5,8,0.98) 100%)" }} />
       </div>
-      <div style={{ position: "fixed", width: 600, height: 600, borderRadius: "50%", background: "radial-gradient(circle,rgba(79,70,229,0.13),transparent 65%)", top: -300, left: -200, zIndex: 0, pointerEvents: "none" }} />
+      <div style={{ position: "fixed", width: 700, height: 700, borderRadius: "50%", background: "radial-gradient(circle,rgba(79,70,229,0.13),transparent 65%)", top: -350, left: -250, zIndex: 0, pointerEvents: "none" }} />
 
       <HeroCanvas />
 
       <div style={{ position: "relative", zIndex: 10, maxWidth: 1060, margin: "0 auto", padding: isMobile ? "0 20px" : "0 40px", width: "100%" }}>
 
-        {/* Tags */}
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: isMobile ? 24 : 40 }}>
-          {["AI · ML Engineer", "M.S. CS · GPA 4.0", "RANLP 2025 Co-Author", "California, US"].map(tag => (
-            <span key={tag} style={{ fontSize: isMobile ? 10 : 12, padding: isMobile ? "4px 10px" : "6px 16px", borderRadius: 9999, background: "rgba(255,255,255,0.055)", border: "1px solid rgba(255,255,255,0.11)", color: "rgba(242,242,247,0.65)" }}>
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        {/* Main layout */}
-        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 110px" : "1fr 260px", gap: isMobile ? 16 : 60, alignItems: "start", marginBottom: isMobile ? 28 : 52 }}>
-
+        {/* ── MOBILE LAYOUT ── */}
+        {isMobile && (
           <div>
-            {/* Name */}
-            <div style={{ fontFamily: "-apple-system, BlinkMacSystemFont, SF Pro Display, Helvetica Neue, sans-serif", fontSize: isMobile ? "clamp(2.8rem,12vw,4rem)" : "clamp(3.2rem,7vw,6.5rem)", fontWeight: 300, letterSpacing: "-0.045em", lineHeight: 1, color: "#f5f5f7", marginBottom: 0 }}>
-              Shazan Ansar
-            </div>
-            <div style={{ fontFamily: "-apple-system, BlinkMacSystemFont, SF Pro Display, Helvetica Neue, sans-serif", fontSize: isMobile ? "clamp(2.8rem,12vw,4rem)" : "clamp(3.2rem,7vw,6.5rem)", fontWeight: 300, letterSpacing: "-0.045em", lineHeight: 1, marginBottom: isMobile ? 20 : 28, background: "linear-gradient(135deg,#60a5fa 0%,#a78bfa 38%,#ec4899 70%,#fb923c 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-              Mohammed
+            {/* Photo + name on same row */}
+            <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 16 }}>
+              {/* Small photo */}
+              <div style={{ width: 72, height: 72, borderRadius: "50%", padding: 2, background: "linear-gradient(135deg,#3b82f6,#8b5cf6,#ec4899)", flexShrink: 0 }}>
+                <div style={{ width: "100%", height: "100%", borderRadius: "50%", overflow: "hidden", background: "#0a0a10" }}>
+                  <Image src="/images/profile.jpg" alt="Shazan" width={72} height={72} style={{ objectFit: "cover", width: "100%", height: "100%", borderRadius: "50%" }} />
+                </div>
+              </div>
+              {/* Name */}
+              <div>
+                <div style={{ fontFamily: "-apple-system, BlinkMacSystemFont, SF Pro Display, sans-serif", fontSize: "2rem", fontWeight: 300, letterSpacing: "-0.04em", lineHeight: 1, color: "#f5f5f7" }}>Shazan Ansar</div>
+                <div style={{ fontFamily: "-apple-system, BlinkMacSystemFont, SF Pro Display, sans-serif", fontSize: "2rem", fontWeight: 300, letterSpacing: "-0.04em", lineHeight: 1, background: "linear-gradient(135deg,#60a5fa 0%,#a78bfa 40%,#ec4899 72%,#fb923c 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Mohammed</div>
+              </div>
             </div>
 
-            <p style={{ fontSize: isMobile ? 14 : 15, color: "rgba(242,242,247,0.58)", fontWeight: 300, lineHeight: 1.75, marginBottom: isMobile ? 24 : 32 }}>
+            {/* Tags */}
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 14 }}>
+              {["AI · ML Engineer","M.S. CS · GPA 4.0","RANLP 2025","California, US"].map(tag => (
+                <span key={tag} style={{ fontSize: 10, padding: "4px 10px", borderRadius: 9999, background: "rgba(255,255,255,0.055)", border: "1px solid rgba(255,255,255,0.11)", color: "rgba(242,242,247,0.65)" }}>{tag}</span>
+              ))}
+            </div>
+
+            {/* Subtitle */}
+            <p style={{ fontSize: 13.5, color: "rgba(242,242,247,0.55)", lineHeight: 1.7, marginBottom: 20 }}>
               {profile.tagline} End-to-end ML pipelines, multilingual NLP, and production-grade data platforms.
             </p>
 
-            {/* Socials */}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 7, marginBottom: 16, alignItems: "center" }}>
+            {/* Wise Torch small */}
+            <a href="https://instagram.com/shazan_ansar" target="_blank" rel="noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(10,10,18,0.88)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 10, padding: "7px 12px", textDecoration: "none", marginBottom: 20 }}>
+              <div style={{ width: 24, height: 24, borderRadius: 6, overflow: "hidden" }}>
+                <Image src="/images/wisetorch.png" alt="Wise Torch" width={24} height={24} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
+              </div>
+              <div>
+                <div style={{ fontSize: 11, fontWeight: 600, color: "#f2f2f7", lineHeight: 1.2 }}>Wise Torch</div>
+                <div style={{ fontSize: 10, color: "rgba(242,242,247,0.4)", lineHeight: 1.2 }}>Founder</div>
+              </div>
+            </a>
+
+            {/* Social links */}
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 7, marginBottom: 16 }}>
               {socials.map(s => (
                 <a key={s.name} href={s.href} target="_blank" rel="noreferrer"
-                  style={{ display: "inline-flex", alignItems: "center", gap: 7, height: isMobile ? 36 : 42, padding: isMobile ? "0 10px" : "0 16px", borderRadius: 9999, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", textDecoration: "none", transition: "all 0.2s" }}
-                  onMouseEnter={e => { e.currentTarget.style.background = "rgba(255,255,255,0.1)" }}
-                  onMouseLeave={e => { e.currentTarget.style.background = "rgba(255,255,255,0.05)" }}
+                  style={{ display: "inline-flex", alignItems: "center", gap: 6, height: 34, padding: "0 12px", borderRadius: 9999, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", textDecoration: "none" }}
                 >
-                  <div style={{ width: isMobile ? 20 : 24, height: isMobile ? 20 : 24, borderRadius: 6, background: s.iconBg, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>{s.svg}</div>
-                  {!isMobile && (
-                    <div>
-                      <div style={{ fontSize: 12, fontWeight: 500, color: "rgba(242,242,247,0.9)", lineHeight: 1.15 }}>{s.name}</div>
-                      <div style={{ fontSize: 10.5, color: "rgba(242,242,247,0.38)", lineHeight: 1.15 }}>{s.handle}</div>
-                    </div>
-                  )}
-                  {isMobile && <span style={{ fontSize: 11, color: "rgba(242,242,247,0.7)", fontWeight: 500 }}>{s.name}</span>}
+                  <div style={{ width: 20, height: 20, borderRadius: 5, background: s.iconBg, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>{s.svg}</div>
+                  <span style={{ fontSize: 11.5, fontWeight: 500, color: "rgba(242,242,247,0.85)" }}>{s.name}</span>
                 </a>
               ))}
-              <a href={profile.social.email}
-                style={{ height: isMobile ? 36 : 42, padding: isMobile ? "0 14px" : "0 22px", borderRadius: 9999, display: "inline-flex", alignItems: "center", fontSize: isMobile ? 12 : 13, fontWeight: 600, letterSpacing: "0.04em", background: "linear-gradient(135deg,#2563eb,#7c3aed)", color: "#fff", textDecoration: "none" }}
-              >Hire Me</a>
+              <a href={profile.social.email} style={{ height: 34, padding: "0 16px", borderRadius: 9999, display: "inline-flex", alignItems: "center", fontSize: 12, fontWeight: 600, background: "linear-gradient(135deg,#2563eb,#7c3aed)", color: "#fff", textDecoration: "none" }}>Hire Me</a>
             </div>
 
-            {/* CTAs */}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-              <button onClick={() => scrollTo("projects")}
-                style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: isMobile ? "11px 20px" : "13px 28px", borderRadius: 9999, fontSize: isMobile ? 13 : 14, fontWeight: 500, color: "#fff", background: "linear-gradient(135deg,#2563eb,#7c3aed)", border: "none", cursor: "pointer", transition: "transform 0.2s" }}
-                onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px)" }}
-                onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)" }}
-              >View Projects →</button>
-              <a href={profile.social.email}
-                style={{ display: "inline-flex", alignItems: "center", padding: isMobile ? "11px 18px" : "13px 24px", borderRadius: 9999, fontSize: isMobile ? 13 : 14, fontWeight: 500, background: "rgba(6,182,212,0.08)", border: "1px solid rgba(6,182,212,0.3)", color: "#67e8f9", textDecoration: "none" }}
-              >Get in Touch</a>
-              <a href="/resume.pdf" download
-                style={{ display: "inline-flex", alignItems: "center", padding: isMobile ? "11px 18px" : "13px 24px", borderRadius: 9999, fontSize: isMobile ? 13 : 14, fontWeight: 600, background: "rgba(16,185,129,0.1)", border: "1px solid rgba(16,185,129,0.35)", color: "#34d399", textDecoration: "none" }}
-              >↓ Resume</a>
+            {/* CTA */}
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 28 }}>
+              <button onClick={() => scrollTo("projects")} style={{ padding: "11px 22px", borderRadius: 9999, fontSize: 13, fontWeight: 500, color: "#fff", background: "linear-gradient(135deg,#2563eb,#7c3aed)", border: "none", cursor: "pointer" }}>View Projects →</button>
+              <a href={profile.social.email} style={{ padding: "11px 18px", borderRadius: 9999, fontSize: 13, fontWeight: 500, background: "rgba(6,182,212,0.08)", border: "1px solid rgba(6,182,212,0.3)", color: "#67e8f9", textDecoration: "none" }}>Get in Touch</a>
+              <a href="/resume.pdf" download style={{ padding: "11px 18px", borderRadius: 9999, fontSize: 13, fontWeight: 600, background: "rgba(16,185,129,0.1)", border: "1px solid rgba(16,185,129,0.35)", color: "#34d399", textDecoration: "none" }}>↓ Resume</a>
+            </div>
+
+            {/* Metrics 2x2 */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 14, overflow: "hidden" }}>
+              {metrics.map((m, i) => (
+                <div key={i} style={{ textAlign: "center", padding: "18px 12px", background: "rgba(10,10,16,0.75)", borderRight: i % 2 === 0 ? "1px solid rgba(255,255,255,0.08)" : "none", borderBottom: i < 2 ? "1px solid rgba(255,255,255,0.08)" : "none" }}>
+                  <div style={{ fontFamily: "-apple-system, BlinkMacSystemFont, SF Pro Display, sans-serif", fontSize: "1.9rem", fontWeight: 300, letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 5, color: m.color }}>
+                    <CountUp to={m.to} suffix={m.suffix} isFloat={m.isFloat} />
+                  </div>
+                  <div style={{ fontSize: 10.5, lineHeight: 1.4, color: "rgba(242,242,247,0.4)" }}>{m.label}</div>
+                </div>
+              ))}
             </div>
           </div>
+        )}
 
-          {/* Photo — shown on both mobile and desktop */}
-          {
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flexShrink: 0 }}>
-              <div style={{ width: 240, height: 240, borderRadius: "50%", padding: 3, background: "linear-gradient(135deg,#3b82f6,#8b5cf6,#ec4899)" }}>
-                <div style={{ width: "100%", height: "100%", borderRadius: "50%", overflow: "hidden", background: "#0a0a10" }}>
-                  <Image src="/images/profile.jpg" alt="Shazan Ansar Mohammed" width={240} height={240} style={{ objectFit: "cover", width: "100%", height: "100%", borderRadius: "50%" }} />
+        {/* ── DESKTOP LAYOUT ── */}
+        {!isMobile && (
+          <div>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 40 }}>
+              {["AI · ML Engineer","M.S. CS · GPA 4.0","RANLP 2025 Co-Author","California, US"].map(tag => (
+                <span key={tag} style={{ fontSize: 12, padding: "6px 16px", borderRadius: 9999, background: "rgba(255,255,255,0.055)", border: "1px solid rgba(255,255,255,0.11)", color: "rgba(242,242,247,0.65)" }}>{tag}</span>
+              ))}
+            </div>
+
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 260px", gap: 60, alignItems: "center", marginBottom: 52 }}>
+              <div>
+                <div style={{ fontFamily: "-apple-system, BlinkMacSystemFont, SF Pro Display, Helvetica Neue, sans-serif", fontSize: "clamp(3.2rem,7vw,6.5rem)", fontWeight: 300, letterSpacing: "-0.045em", lineHeight: 1, color: "#f5f5f7", marginBottom: 0 }}>Shazan Ansar</div>
+                <div style={{ fontFamily: "-apple-system, BlinkMacSystemFont, SF Pro Display, Helvetica Neue, sans-serif", fontSize: "clamp(3.2rem,7vw,6.5rem)", fontWeight: 300, letterSpacing: "-0.045em", lineHeight: 1, marginBottom: 28, background: "linear-gradient(135deg,#60a5fa 0%,#a78bfa 38%,#ec4899 70%,#fb923c 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Mohammed</div>
+                <p style={{ fontSize: 15, color: "rgba(242,242,247,0.58)", fontWeight: 300, lineHeight: 1.75, maxWidth: 460, marginBottom: 32 }}>
+                  {profile.tagline} End-to-end ML pipelines, multilingual NLP, and production-grade data platforms.
+                </p>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 20 }}>
+                  {socials.map(s => (
+                    <a key={s.name} href={s.href} target="_blank" rel="noreferrer"
+                      style={{ display: "inline-flex", alignItems: "center", gap: 9, height: 42, padding: "0 16px", borderRadius: 9999, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", textDecoration: "none", transition: "all 0.2s" }}
+                      onMouseEnter={e => { e.currentTarget.style.background = "rgba(255,255,255,0.1)"; e.currentTarget.style.transform = "translateY(-2px)" }}
+                      onMouseLeave={e => { e.currentTarget.style.background = "rgba(255,255,255,0.05)"; e.currentTarget.style.transform = "translateY(0)" }}
+                    >
+                      <div style={{ width: 24, height: 24, borderRadius: 6, background: s.iconBg, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>{s.svg}</div>
+                      <div>
+                        <div style={{ fontSize: 12, fontWeight: 500, color: "rgba(242,242,247,0.9)", lineHeight: 1.15 }}>{s.name}</div>
+                        <div style={{ fontSize: 10.5, color: "rgba(242,242,247,0.38)", lineHeight: 1.15 }}>{s.handle}</div>
+                      </div>
+                    </a>
+                  ))}
+                  <a href={profile.social.email}
+                    style={{ height: 42, padding: "0 22px", borderRadius: 9999, display: "inline-flex", alignItems: "center", fontSize: 13, fontWeight: 600, letterSpacing: "0.04em", background: "linear-gradient(135deg,#2563eb,#7c3aed)", color: "#fff", textDecoration: "none", transition: "transform 0.2s,box-shadow 0.2s" }}
+                    onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 8px 24px rgba(124,58,237,0.45)" }}
+                    onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none" }}
+                  >Hire Me</a>
+                </div>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
+                  <button onClick={() => scrollTo("projects")} style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "13px 28px", borderRadius: 9999, fontSize: 14, fontWeight: 500, color: "#fff", background: "linear-gradient(135deg,#2563eb,#7c3aed)", border: "none", cursor: "pointer", transition: "transform 0.2s,box-shadow 0.2s" }} onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 14px 36px rgba(124,58,237,0.4)" }} onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none" }}>View Projects →</button>
+                  <a href={profile.social.email} style={{ display: "inline-flex", alignItems: "center", padding: "13px 24px", borderRadius: 9999, fontSize: 14, fontWeight: 500, background: "rgba(6,182,212,0.08)", border: "1px solid rgba(6,182,212,0.3)", color: "#67e8f9", textDecoration: "none" }}>Get in Touch</a>
+                  <a href="/resume.pdf" download style={{ display: "inline-flex", alignItems: "center", padding: "13px 24px", borderRadius: 9999, fontSize: 14, fontWeight: 600, background: "rgba(16,185,129,0.1)", border: "1px solid rgba(16,185,129,0.35)", color: "#34d399", textDecoration: "none" }}>↓ Resume</a>
                 </div>
               </div>
-              <WiseTorchBadge />
-            </div>
-          }
-        </div>
-
-        {/* Metrics */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 1, border: "1px solid rgba(255,255,255,0.08)", borderRadius: 16, overflow: "hidden" }}>
-          {metrics.map((m, i) => (
-            <div key={i} style={{ textAlign: "center", padding: isMobile ? "20px 12px" : "26px 20px", background: "rgba(10,10,16,0.75)", borderRight: (i % 2 === 0) ? "1px solid rgba(255,255,255,0.08)" : "none", borderBottom: i < 2 ? "1px solid rgba(255,255,255,0.08)" : "none" }}>
-              <div style={{ fontFamily: "-apple-system, BlinkMacSystemFont, SF Pro Display, sans-serif", fontSize: isMobile ? "2rem" : "2.8rem", fontWeight: 300, letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 6, color: m.color }}>
-                <CountUp to={m.to} suffix={m.suffix} isFloat={m.isFloat} />
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                <div style={{ width: 240, height: 240, borderRadius: "50%", padding: 3, background: "linear-gradient(135deg,#3b82f6,#8b5cf6,#ec4899)" }}>
+                  <div style={{ width: "100%", height: "100%", borderRadius: "50%", overflow: "hidden", background: "#0a0a10" }}>
+                    <Image src="/images/profile.jpg" alt="Shazan Ansar Mohammed" width={240} height={240} style={{ objectFit: "cover", width: "100%", height: "100%", borderRadius: "50%" }} />
+                  </div>
+                </div>
+                <WiseTorchBadge />
               </div>
-              <div style={{ fontSize: isMobile ? 10 : 12, lineHeight: 1.5, color: "rgba(242,242,247,0.4)" }}>{m.label}</div>
             </div>
-          ))}
-        </div>
+
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 16, overflow: "hidden" }}>
+              {metrics.map((m, i) => (
+                <div key={i} style={{ textAlign: "center", padding: "26px 20px", background: "rgba(10,10,16,0.75)", borderRight: i < 3 ? "1px solid rgba(255,255,255,0.08)" : "none" }}>
+                  <div style={{ fontFamily: "-apple-system, BlinkMacSystemFont, SF Pro Display, sans-serif", fontSize: "2.8rem", fontWeight: 300, letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 8, color: m.color }}>
+                    <CountUp to={m.to} suffix={m.suffix} isFloat={m.isFloat} />
+                  </div>
+                  <div style={{ fontSize: 12, lineHeight: 1.5, color: "rgba(242,242,247,0.4)" }}>{m.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
       </div>
     </section>
   )
