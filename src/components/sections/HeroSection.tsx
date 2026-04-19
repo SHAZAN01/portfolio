@@ -80,7 +80,7 @@ export function HeroSection() {
         </div>
 
         {/* Main layout */}
-        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 260px", gap: isMobile ? 32 : 60, alignItems: "center", marginBottom: isMobile ? 36 : 52 }}>
+        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 260px", gap: isMobile ? 24 : 60, alignItems: isMobile ? "start" : "center", marginBottom: isMobile ? 28 : 52 }}>
 
           <div>
             {/* Name */}
@@ -134,8 +134,8 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Photo — hidden on mobile, shown on desktop */}
-          {!isMobile && (
+          {/* Photo — shown on both mobile and desktop */}
+          {
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flexShrink: 0 }}>
               <div style={{ width: 240, height: 240, borderRadius: "50%", padding: 3, background: "linear-gradient(135deg,#3b82f6,#8b5cf6,#ec4899)" }}>
                 <div style={{ width: "100%", height: "100%", borderRadius: "50%", overflow: "hidden", background: "#0a0a10" }}>
@@ -144,7 +144,7 @@ export function HeroSection() {
               </div>
               <WiseTorchBadge />
             </div>
-          )}
+          }
         </div>
 
         {/* Metrics */}
