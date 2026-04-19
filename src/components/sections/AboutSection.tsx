@@ -1,11 +1,13 @@
 "use client"
+import { useIsMobile } from "@/components/shared/useIsMobile"
 import { FadeUp } from "@/components/shared/FadeUp"
 import Image from "next/image"
 import { profile } from "@/data/profile"
 
 export function AboutSection() {
+  const isMobile = useIsMobile()
   return (
-    <section id="about" style={{ padding: "72px 40px", maxWidth: 1060, margin: "0 auto", width: "100%" }}>
+    <section id="about" style={{ padding: `${isMobile ? 56 : 72}px ${isMobile ? 20 : 40}px`, maxWidth: 1060, margin: "0 auto", width: "100%" }}>
       <FadeUp>
         <p style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: "0.18em", color: "rgba(242,242,247,0.3)", marginBottom: 14, fontFamily: "-apple-system, BlinkMacSystemFont, sans-serif" }}>About</p>
         <h2 style={{ fontFamily: "-apple-system, BlinkMacSystemFont, SF Pro Display, Helvetica Neue, sans-serif", fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 300, letterSpacing: "-0.03em", lineHeight: 1.08, marginBottom: 40 }}>
@@ -14,7 +16,7 @@ export function AboutSection() {
           {" Builder."}
         </h2>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 380px", gap: 48, alignItems: "start" }}>
+        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 380px", gap: 48, alignItems: "start" }}>
           <div>
             {profile.bio.map((p, i) => (
               <p key={i} style={{ fontSize: 15, color: "rgba(242,242,247,0.6)", lineHeight: 1.9, marginBottom: 16, fontFamily: "-apple-system, BlinkMacSystemFont, sans-serif", fontWeight: 300 }}>{p}</p>

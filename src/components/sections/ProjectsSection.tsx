@@ -1,4 +1,5 @@
 "use client"
+import { useIsMobile } from "@/components/shared/useIsMobile"
 import { useState, useMemo } from "react"
 import { FadeUp } from "@/components/shared/FadeUp"
 import { projects, ProjectCategory } from "@/data/projects"
@@ -18,6 +19,7 @@ const CAT_COLORS: Record<string, string> = {
 }
 
 export function ProjectsSection() {
+  const isMobile = useIsMobile()
   const [activeCat, setActiveCat] = useState<"All" | ProjectCategory>("All")
   const [search, setSearch] = useState("")
 
@@ -30,7 +32,7 @@ export function ProjectsSection() {
     }), [activeCat, search])
 
   return (
-    <section id="projects" style={{ padding: "72px 40px", maxWidth: 1060, margin: "0 auto", width: "100%" }}>
+    <section id="projects" style={{ padding: `${isMobile ? 56 : 72}px ${isMobile ? 20 : 40}px`, maxWidth: 1060, margin: "0 auto", width: "100%" }}>
       <FadeUp>
         <p style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: "0.18em", color: "rgba(242,242,247,0.3)", marginBottom: 14 }}>Projects</p>
         <h2 style={{ fontFamily: "-apple-system, BlinkMacSystemFont, SF Pro Display, sans-serif", fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 300, letterSpacing: "-0.03em", lineHeight: 1.08, marginBottom: 32 }}>
@@ -59,7 +61,7 @@ export function ProjectsSection() {
           {filtered.length} projects
         </p>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 16, width: "100%" }}>
+        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3,1fr)", gap: 16, width: "100%" }}>
           {filtered.map(p => (
             <div key={p.id} style={{
               borderRadius: 18, padding: "24px 24px 20px", display: "flex", flexDirection: "column",

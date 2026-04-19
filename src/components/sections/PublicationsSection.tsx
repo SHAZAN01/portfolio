@@ -1,4 +1,5 @@
 "use client"
+import { useIsMobile } from "@/components/shared/useIsMobile"
 import { FadeUp } from "@/components/shared/FadeUp"
 
 const paper = {
@@ -19,6 +20,7 @@ const paper = {
 }
 
 export function PublicationsSection() {
+  const isMobile = useIsMobile()
   return (
     <section id="publications" style={{ padding: "80px 40px", maxWidth: 1060, margin: "0 auto", width: "100%" }}>
       <FadeUp>
@@ -42,7 +44,7 @@ export function PublicationsSection() {
           </div>
 
           {/* Two-col layout */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 260px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 260px" }}>
 
             {/* Left */}
             <div style={{ padding: "28px 32px", borderRight: "1px solid rgba(255,255,255,0.06)" }}>

@@ -1,4 +1,5 @@
 "use client"
+import { useIsMobile } from "@/components/shared/useIsMobile"
 import { FadeUp } from "@/components/shared/FadeUp"
 import Image from "next/image"
 
@@ -12,6 +13,7 @@ const links = [
 ]
 
 export function ContactSection() {
+  const isMobile = useIsMobile()
   const cardStyle = {
     display: "flex", alignItems: "center", gap: 14,
     borderRadius: 14, padding: "18px 20px",
@@ -33,7 +35,7 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" style={{ padding: "72px 40px", maxWidth: 1060, margin: "0 auto", width: "100%" }}>
+    <section id="contact" style={{ padding: `${isMobile ? 56 : 72}px ${isMobile ? 20 : 40}px`, maxWidth: 1060, margin: "0 auto", width: "100%" }}>
       <FadeUp>
 
         {/* Top row: heading + photo */}
@@ -77,7 +79,7 @@ export function ContactSection() {
         </div>
 
         {/* Social grid */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 12, marginBottom: 16 }}>
+        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(2,1fr)", gap: 12, marginBottom: 16 }}>
           {links.map(link => (
             <a key={link.label} href={link.href} target={link.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer"
               style={cardStyle} onMouseEnter={ce} onMouseLeave={cl}
