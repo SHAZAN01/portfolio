@@ -17,6 +17,10 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+  },
   title: "Shazan Ansar Mohammed — AI/ML & Data Engineer",
   description: "Data and Machine Learning Engineer specializing in end-to-end ML pipelines, multilingual NLP, and production-grade data platforms. M.S. CS @ CSUDH · GPA 4.0 · RANLP 2025.",
   keywords: ["AI Engineer","ML Engineer","Data Engineer","NLP","Python","AWS","PyTorch"],

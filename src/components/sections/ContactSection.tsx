@@ -4,11 +4,11 @@ import { FadeUp } from "@/components/shared/FadeUp"
 import Image from "next/image"
 
 const links = [
-  { label: "LinkedIn", handle: "shazan-ansar", href: "https://www.linkedin.com/in/shazan-ansar/", iconBg: "rgba(10,102,194,0.12)", iconColor: "#0a66c2", icon: "in" },
-  { label: "GitHub", handle: "SHAZAN01", href: "https://github.com/SHAZAN01", iconBg: "rgba(255,255,255,0.06)", iconColor: "rgba(242,242,247,0.8)", icon: "GH" },
+  { label: "LinkedIn", handle: "shazan-ansar", href: "https://www.linkedin.com/in/shazan-ansar/", iconBg: "#0a66c2", iconColor: "#fff", icon: "in" },
+  { label: "GitHub", handle: "SHAZAN01", href: "https://github.com/SHAZAN01", iconBg: "#1a1a1a", iconColor: "#fff", icon: "GH" },
   { label: "Email", handle: "shazanansar@gmail.com", href: "mailto:shazanansar@gmail.com", iconBg: "rgba(59,130,246,0.1)", iconColor: "#60a5fa", icon: "@" },
-  { label: "Medium", handle: "@shazanansar", href: "https://medium.com/@shazanansar", iconBg: "rgba(255,255,255,0.06)", iconColor: "rgba(242,242,247,0.8)", icon: "M" },
-  { label: "Instagram", handle: "shazan_ansar", href: "https://instagram.com/shazan_ansar", iconBg: "rgba(236,72,153,0.1)", iconColor: "#ec4899", icon: "IG" },
+  { label: "Medium", handle: "@shazanansar", href: "https://medium.com/@shazanansar", iconBg: "#000", iconColor: "#fff", icon: "M" },
+  { label: "Instagram", handle: "shazan_ansar", href: "https://instagram.com/shazan_ansar", iconBg: "linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)", iconColor: "#fff", icon: "IG" },
   { label: "Discord", handle: "insightshazan", href: "#", iconBg: "rgba(88,101,242,0.12)", iconColor: "#818cf8", icon: "DC" },
 ]
 
