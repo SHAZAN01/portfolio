@@ -1,0 +1,45 @@
+---
+title: "Near real-time lakehouse"
+slug: "lakehouse-realtime"
+date: "2025-12-15"
+order: 3
+kind: "Engineering"
+status: "Personal project"
+tags: ["Data engineering", "Lakehouse", "Pipelines", "Data quality"]
+summary: "A medallion lakehouse with schema enforcement and quality gates, built so analytics and ML read from fresh, trustworthy tables."
+role: "Designed and built"
+stack: ["Python", "SQL", "PySpark", "Delta Lake", "Airflow", "S3"]
+pipeline: ["Raw ingestion (bronze)", "Clean and dedupe (silver)", "Quality gate", "Business and feature tables (gold)"]
+metrics:
+  - label: "Data latency"
+    value: "−40%"
+    verified: false
+  - label: "Layers"
+    value: "Bronze, silver, gold"
+    verified: true
+  - label: "Promotion rule"
+    value: "Quality gate"
+    verified: true
+featured: true
+---
+
+## Problem
+Analytics and ML both depend on data that is fresh and correct. Pipelines that silently pass bad records, or that break when a schema changes, erode trust in every dashboard and model downstream.
+
+## Architecture
+- **Bronze:** raw ingestion with the incoming schema captured as-is.
+- **Silver:** cleaned, standardised, and deduplicated records.
+- **Gold:** business-ready tables and feature-ready tables for models.
+
+## Engineering decisions
+- Schema evolution rules so new columns don't break downstream jobs.
+- Late-arriving data handled explicitly rather than dropped.
+- Quality gates (null, uniqueness, and range checks) that must pass before data is promoted to the next layer.
+- Partitioning chosen for the dominant query patterns.
+
+## Outcome
+Fresher tables for analytics, fewer downstream pipeline failures, and feature tables that shorten ML experiment set-up.
+
+## What I'd improve
+- Data contracts with producers instead of defensive checks alone.
+- Lineage tracking so a bad gold row can be traced to its source.

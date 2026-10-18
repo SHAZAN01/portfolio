@@ -1,0 +1,48 @@
+---
+title: "Clinical translation for English–Nepali"
+slug: "clinical-translation"
+date: "2025-08-01"
+order: 2
+kind: "Research"
+status: "Published, RANLP 2025"
+tags: ["NLP", "Multilingual", "Fine-tuning", "Evaluation"]
+summary: "A domain-adapted medical translation pipeline comparing fine-tuned mBART and NLLB-200, with multi-metric evaluation and error profiling."
+role: "Research assistant; corpus curation, fine-tuning, evaluation dashboards"
+stack: ["Python", "PyTorch", "Hugging Face", "mBART", "NLLB-200", "COMET", "BERTScore"]
+pipeline: ["Curate medical corpus", "Clean and split", "Fine-tune mBART and NLLB-200", "Multi-metric evaluation", "Error and ethics review"]
+metrics:
+  - label: "Parallel corpus"
+    value: "70k+ entries"
+    verified: true
+  - label: "Metrics compared"
+    value: "6"
+    verified: true
+  - label: "BLEU vs baseline"
+    value: "+32%"
+    verified: false
+links:
+  - label: "RANLP 2025 paper (add link)"
+    href: ""
+featured: true
+---
+
+## Problem
+Nepali is a low-resource language, and medical translation is unforgiving: a wrong term can mean a wrong diagnosis. General translation systems lack the parallel medical data to get clinical terminology right.
+
+## Approach
+- Curated and cleaned a domain-specific English–Nepali parallel corpus of **70k+** entries, combining several sources with medical relevance.
+- Fine-tuned two multilingual models, **mBART** and **NLLB-200**, in PyTorch under one experimental framework.
+- Evaluated with six measures so that surface overlap and meaning were both covered: BLEU, chrF++, METEOR, BERTScore, COMET, and perplexity.
+- Built dashboards to compare models across metrics.
+
+## Findings
+- NLLB-200 outperformed mBART on both surface-level and semantic metrics.
+- NLLB-200 also produced fewer hallucinations on clinical text.
+- Error profiling surfaced term omissions and cultural bias as the main remaining risks.
+
+## Responsible use
+Because this is medical text, the work included an ethics assessment covering safety, fairness, and deployment constraints, not just scores.
+
+## What I'd improve
+- A clinician-reviewed human evaluation rubric for terminology.
+- Confidence estimates so the system can flag translations it shouldn't be trusted on.

@@ -1,0 +1,40 @@
+---
+title: "RAG analytics assistant"
+slug: "rag-analytics-assistant"
+date: "2025-11-20"
+order: 4
+kind: "Engineering"
+status: "Personal project"
+tags: ["LLM", "RAG", "Retrieval", "Optimization"]
+summary: "An assistant that answers analytics questions from grounded retrieval, with routing and caching to control latency and cost."
+role: "Designed and built"
+stack: ["Python", "Embeddings", "Vector search", "Caching", "Evaluation"]
+pipeline: ["Question", "Normalise and route", "Filtered retrieval", "Grounded answer", "Cache and evaluate"]
+metrics:
+  - label: "Response latency"
+    value: "−35%"
+    verified: false
+  - label: "Answers"
+    value: "Grounded in retrieved data"
+    verified: true
+  - label: "Releases"
+    value: "Regression-checked"
+    verified: true
+featured: true
+---
+
+## Problem
+People wanted quick answers about their data. A plain chatbot answers confidently even when it has no grounding, and every call costs time and tokens.
+
+## Approach
+- Retrieval filtering and better chunking so the model sees the right context.
+- Query normalisation plus caching for repeated questions.
+- Routing to skip unnecessary model or tool calls.
+- A standard evaluation workflow so prompt or model changes can't silently reduce quality.
+
+## Outcome
+Faster responses on repeated queries, steadier answer relevance, and controlled per-query cost.
+
+## What I'd improve
+- A golden-question set run on every change.
+- Guardrails and audit logs for sensitive data.

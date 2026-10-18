@@ -1,0 +1,33 @@
+---
+title: "ML experimentation and regression framework"
+slug: "ml-eval-framework"
+date: "2025-10-01"
+order: 5
+kind: "Engineering"
+status: "Personal project"
+tags: ["MLOps", "Experimentation", "Evaluation", "Reproducibility"]
+summary: "Config-driven experiments with versioned data, tracked metrics, and regression tests so model changes can't quietly get worse."
+role: "Designed and built"
+stack: ["Python", "Config-driven runs", "Metric tracking", "Drift checks"]
+pipeline: ["Config", "Versioned data", "Train run", "Tracked metrics", "Regression gate"]
+metrics:
+  - label: "Runs"
+    value: "Config + versioned"
+    verified: true
+  - label: "Changes"
+    value: "Regression-tested"
+    verified: true
+featured: false
+---
+
+## Goal
+Make model iteration safe: every result reproducible, every change compared against the last good run.
+
+## What it does
+- Config-driven experiments, so a run can be repeated exactly.
+- Data versioning and metric tracking across runs.
+- Automated regression tests that flag performance drops before they ship.
+- Hooks for drift monitoring.
+
+## Outcome
+Less manual validation and faster, more comparable iteration cycles.

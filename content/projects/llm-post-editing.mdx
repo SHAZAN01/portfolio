@@ -1,0 +1,50 @@
+---
+title: "LLM post-editing for test-time domain adaptation"
+slug: "llm-post-editing"
+date: "2026-06-01"
+order: 1
+kind: "Research"
+status: "ICAI 2026, to appear in Springer CCIS"
+tags: ["NLP", "LLM", "Machine translation", "Evaluation"]
+summary: "Keep the translation model frozen, let it draft, and have an LLM edit the draft for a specific domain. No retraining, and most of the fine-tuning gain."
+role: "Co-author"
+stack: ["Python", "Hugging Face", "NMT", "LLMs", "COMET", "chrF", "BLEU"]
+pipeline: ["Source text", "Frozen NMT draft", "Domain-aware LLM edit", "Evaluation vs fine-tuned model"]
+metrics:
+  - label: "Gain recovered vs full fine-tuning"
+    value: "87–92%"
+    verified: true
+  - label: "Domains tested"
+    value: "4"
+    verified: true
+  - label: "Retraining needed"
+    value: "None"
+    verified: true
+links:
+  - label: "Paper (link when published)"
+    href: ""
+featured: true
+---
+
+## Problem
+Translation models trained on general text get worse when they meet a new domain: medical notes, legal language, technical manuals. The usual fix is to fine-tune a copy of the model for each domain. That costs data, compute, and a deployment per domain.
+
+## Idea
+Leave the translation model untouched. It produces a draft, and a large language model edits that draft with the target domain in mind. Adaptation happens at test time, in the editing step, instead of in the weights.
+
+## How it was tested
+The frozen-model-plus-editor set-up was compared against a fully fine-tuned model on the same four domains.
+
+## Result
+Across four domains, LLM post-editing recovered **87–92%** of the improvement a fully fine-tuned model achieved, without any retraining.
+
+## Why it matters
+For teams that can't maintain one fine-tuned model per domain, a frozen model plus an editor is a cheaper path that keeps most of the quality.
+
+## Co-authors
+Dr. Benyamin Ahmadnia (CSUDH), Dr. Sahar Hooshmand (CSUDH), and Dr. Li Zhou (Harvard Medical School).
+
+## What I'd look at next
+- When does editing hurt? Separating real fixes from fluent rewrites that change meaning.
+- Cost and latency of the editing step compared with serving fine-tuned models.
+- This question is what led to my thesis, TRACE-MT, on measuring when added context actually helps.
