@@ -14,7 +14,7 @@ export const profile = {
   siteUrl: "https://shazan.dev",
 
   roles: ["Data Scientist", "AI Architect", "Data Engineer"],
-  headline: "Rigorous models. Reliable data systems.",
+  headline: "",
   bio: "Data scientist specializing in NLP and large language models, with a data engineer's discipline for pipelines and an architect's eye for systems. Published research on LLM-based machine translation at RANLP 2025 and ICAI 2026.",
 
   intro: [

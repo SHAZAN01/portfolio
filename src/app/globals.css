@@ -335,3 +335,26 @@ body {
 .dag .edge::after { background: linear-gradient(90deg, var(--c1, #2997ff), var(--c2, #a855f7)); box-shadow: 0 0 10px var(--c2, #a855f7); }
 .dag .node { transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
 .dag .node:hover { transform: translateY(-3px); border-color: var(--c); box-shadow: 0 10px 30px -12px var(--c); }
+
+/* ── Hero photos: crossfade + slow Ken Burns ────────────────────── */
+.hero-shot { opacity: 0; transform: scale(1.08); transition: opacity 1.4s ease, transform 7s ease-out; }
+.hero-shot.is-on { opacity: 1; transform: scale(1); }
+
+/* ── Mobile pipeline stepper ───────────────────────────────────── */
+.step-line { position: absolute; left: 13px; top: 28px; bottom: 0; width: 2px; overflow: hidden;
+  background: linear-gradient(var(--c1), var(--c2)); opacity: .45; }
+.step-line::after { content: ""; position: absolute; left: 0; width: 2px; height: 14px; border-radius: 2px;
+  background: linear-gradient(transparent, #fff, transparent); animation: step-flow 1.8s linear infinite; animation-delay: calc(var(--i, 0) * .3s); }
+@keyframes step-flow { from { top: -14px; } to { top: 100%; } }
+.step { animation: node-in .5s cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(var(--i) * 70ms); }
+
+/* ── Live background: always drifting, colors follow the section ─── */
+:root .scroll-field { --sf-o: .75; }
+.dark .scroll-field { --sf-o: 1; }
+.scroll-field span { width: 62vmax; height: 62vmax; }
+.scroll-field .b1 { background: radial-gradient(closest-side, color-mix(in oklab, var(--sf1) 42%, transparent), transparent); animation: sf-a 22s ease-in-out infinite alternate; }
+.scroll-field .b2 { background: radial-gradient(closest-side, color-mix(in oklab, var(--sf2) 36%, transparent), transparent); animation: sf-b 28s ease-in-out infinite alternate; }
+.scroll-field .b3 { background: radial-gradient(closest-side, color-mix(in oklab, var(--sf3) 32%, transparent), transparent); animation: sf-c 34s ease-in-out infinite alternate; }
+@keyframes sf-a { from { transform: translate3d(0, 0, 0) scale(1); } to { transform: translate3d(28vw, 32vh, 0) scale(1.25); } }
+@keyframes sf-b { from { transform: translate3d(0, 0, 0) scale(1); } to { transform: translate3d(-32vw, 26vh, 0) scale(.85); } }
+@keyframes sf-c { from { transform: translate3d(0, 0, 0) scale(1.1); } to { transform: translate3d(-22vw, -38vh, 0) scale(1.3); } }

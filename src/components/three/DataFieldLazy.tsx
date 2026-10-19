@@ -18,7 +18,7 @@ function hasWebGL() {
 export function DataFieldLazy() {
   const [ready, setReady] = useState(false);
   useEffect(() => {
-    if (!hasWebGL()) return;
+    if (!hasWebGL() || !window.matchMedia("(min-width: 1024px)").matches) return;
     let idle = 0;
     const go = () => setReady(true);
     const schedule = () => {

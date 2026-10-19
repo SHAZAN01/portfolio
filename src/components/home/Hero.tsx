@@ -3,15 +3,21 @@ import { profile } from "@/content/profile";
 import { asset } from "@/lib/photos";
 import { SocialIcon } from "@/components/site/SocialIcon";
 import { DataFieldLazy } from "@/components/three/DataFieldLazy";
+import { HeroPhotos } from "./HeroPhotos";
 
 export function Hero() {
   const portrait = asset(profile.photo, "/images/profile.jpg");
+  const second = asset("/images/me/portrait.jpg", "");
+  const shots = [
+    { src: portrait, alt: "Portrait of Shazan Ansar Mohammed", position: "50% 30%" },
+    ...(second ? [{ src: second, alt: "Shazan Ansar Mohammed", position: "50% 25%" }] : []),
+  ];
   return (
     <section id="top" className="relative isolate overflow-hidden">
-      {/* 3D data field */}
-      <div className="absolute inset-0 -z-10 [mask-image:linear-gradient(to_bottom,transparent_0%,#000_35%,#000_70%,transparent)]">
+      {/* 3D liquid orb behind the portrait */}
+      <div className="absolute inset-0 -z-10">
         <div className="hero-glow absolute inset-0" />
-        <DataFieldLazy />
+        <div className="absolute inset-0 hidden lg:block"><DataFieldLazy /></div>
       </div>
 
       <div className="wrap grid items-center gap-10 pb-8 pt-8 sm:pb-16 sm:pt-16 lg:min-h-[calc(100svh-3.5rem)] lg:grid-cols-12 lg:gap-12 lg:py-16">
@@ -35,6 +41,11 @@ export function Hero() {
             ))}
           </p>
 
+          {profile.headline && (
+            <p className="enter mt-6 max-w-[34ch] text-[clamp(1.4rem,2.4vw,1.9rem)] font-semibold leading-tight tracking-tight" style={{ ["--d" as string]: "220ms" }}>
+              {profile.headline}
+            </p>
+          )}
           <p className="enter mt-4 max-w-[58ch] text-[17px] leading-relaxed text-dim" style={{ ["--d" as string]: "280ms" }}>{profile.bio}</p>
 
           <div className="enter mt-8 flex flex-wrap items-center gap-3" style={{ ["--d" as string]: "340ms" }}>
@@ -63,12 +74,10 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="enter order-1 mx-auto w-full max-w-[300px] sm:max-w-[360px] lg:order-2 lg:col-span-5 lg:max-w-[420px]" style={{ ["--d" as string]: "120ms" }}>
+        <div className="enter order-1 mx-auto w-full max-w-[230px] sm:max-w-[320px] lg:order-2 lg:col-span-5 lg:max-w-[420px]" style={{ ["--d" as string]: "120ms" }}>
           <div className="relative" data-orb-anchor>
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[32px] border border-line bg-card-2 shadow-2xl">
-              <Image src={portrait} alt="Portrait of Shazan Ansar Mohammed" fill priority sizes="(min-width:1024px) 420px, 360px"
-                     className="object-cover" style={{ objectPosition: "50% 30%" }} />
-            </div>
+            <div aria-hidden className="grad-bg absolute -inset-6 rounded-[48px] opacity-40 blur-3xl lg:hidden" />
+            <HeroPhotos shots={shots} />
           </div>
         </div>
       </div>

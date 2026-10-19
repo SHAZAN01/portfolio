@@ -27,7 +27,7 @@ add hike2.jpeg                  life/07-on-the-trail.jpg
 add pool.JPG                    life/08-pool.jpg
 add college.JPG                 life/09-campus.jpg
 add leadership-panel-project.png me/leadership.jpg
-add portrait.JPG                life/11-me.jpg
+add portrait.JPG                me/portrait.jpg
 
 # J.UCS paper photo: any file with "jucs" in its name
 for f in "$SRC"/*; do
