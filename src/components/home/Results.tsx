@@ -14,7 +14,7 @@ export function Results() {
           <p className="lede">Results from published research and reproduced experiments, and the pipelines behind them.</p>
         </div>
 
-        <div className="mt-10 grid gap-4 lg:grid-cols-12">
+        <div className="m-scroll mt-10 grid gap-4 lg:grid-cols-12">
           <article className="reveal card min-w-0 p-6 sm:p-8 lg:col-span-7">
             <p className="text-sm text-dim">Reinforcement learning for routing</p>
             <h3 className="mt-1 text-2xl font-bold tracking-tight">1.6% from optimal on TSP20</h3>

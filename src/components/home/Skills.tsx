@@ -40,7 +40,7 @@ export function Skills() {
                     <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.1em] text-dim">
                       <span className={`size-2 rounded-full ${l.dot}`} aria-hidden />{l.label}
                     </p>
-                    <ul className="mt-4 space-y-2.5">
+                    <ul className="skill-list mt-4 space-y-2.5">
                       {r[l.key].map((s) => (
                         <li key={s} className="flex items-start gap-2.5 text-[15px]">
                           <Check className={`mt-0.5 size-4 shrink-0 ${l.key === "advanced" ? "text-violet" : l.key === "core" ? "text-blue" : "text-faint"}`} aria-hidden />

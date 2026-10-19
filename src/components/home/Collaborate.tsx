@@ -28,7 +28,7 @@ export function Collaborate() {
           <p className="lede mx-auto mt-5 text-center">Hiring a data scientist, building a startup, or working on language AI?</p>
         </div>
 
-        <ul className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="mt-10 hidden gap-3 sm:grid sm:grid-cols-2 lg:grid-cols-4">
           {intents.map((x) => (
             <li key={x.topic}>
               <button onClick={() => choose(x.topic)} className="grad-border card-sm h-full w-full p-5 text-left transition-transform hover:-translate-y-0.5">
@@ -40,7 +40,7 @@ export function Collaborate() {
         </ul>
 
         <div className="mt-10 grid gap-6 lg:grid-cols-12">
-          <div className="lg:col-span-4">
+          <div className="hidden sm:block lg:col-span-4">
             <p className="font-semibold">Find me online</p>
             <ul className="mt-3 grid grid-cols-2 gap-2 lg:grid-cols-1">
               {profile.social.map((s) => (

@@ -27,7 +27,7 @@ export function Experience() {
                   <span className="text-sm text-dim">{r.period}</span>
                 </div>
                 <p className="text-sm text-dim">{r.org}</p>
-                <p className="mt-3 text-[15px]">{r.points[0]}</p>
+                <p className="mt-3 hidden text-[15px] sm:block">{r.points[0]}</p>
               </li>
             ))}
             <li className="p-6">

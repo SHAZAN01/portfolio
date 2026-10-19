@@ -18,7 +18,7 @@ export function Flagship() {
           <Link href="/projects" className="btn btn-ghost">All {total} projects</Link>
         </div>
 
-        <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="m-scroll mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {flagship.map((p, i) => {
             const ext = p.href.startsWith("http");
             const c = ROLE_COLOR[p.role];

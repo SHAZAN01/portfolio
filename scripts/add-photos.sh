@@ -39,8 +39,10 @@ KNOWN=" $JUCS conference-icai-2026.jpeg ranlp-2025.jpeg mentoring.jpeg banner.jp
 n=12
 for f in "$SRC"/*; do
   name=$(basename "$f")
-  case "$name" in *.jpg|*.JPG|*.jpeg|*.JPEG|*.png|*.PNG|*.heic|*.HEIC|*.webp) ;; *) continue ;; esac
+  case "$name" in *.jpg|*.JPG|*.jpeg|*.JPEG|*.heic|*.HEIC) ;; *) continue ;; esac
   case "$KNOWN" in *" $name "*) continue ;; esac
+  case "$name" in Screenshot*|screenshot*) continue ;; esac
+  case "$name" in Screenshot*|screenshot*) continue ;; esac
   slug=$(echo "${name%.*}" | tr '[:upper:]' '[:lower:]' | tr ' _' '--' | tr -cd 'a-z0-9-')
   add "$name" "life/$(printf '%02d' $n)-$slug.jpg"
   n=$((n+1))

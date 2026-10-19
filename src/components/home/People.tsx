@@ -3,8 +3,8 @@
 import Image from "next/image";
 import * as Tabs from "@radix-ui/react-tabs";
 import * as Dialog from "@radix-ui/react-dialog";
-import { ArrowRight, Quote, X, Check } from "lucide-react";
-import { collaborators, mentees, recommendations } from "@/content/people";
+import { ArrowRight, X, Check } from "lucide-react";
+import { collaborators, mentees } from "@/content/people";
 import { Tilt } from "./Tilt";
 
 const initials = (n: string) => n.replace(/^Dr\.\s*/, "").split(" ").map((w) => w[0]).slice(0, 2).join("");
@@ -21,7 +21,7 @@ export function People({ banner, mentorPhoto }: { banner: string; mentorPhoto?: 
           <p className="lede">Advisors, co-authors, and the researchers I mentor.</p>
         </div>
 
-        <Tilt className="reveal mt-10" max={4}>
+        <Tilt className="reveal mt-10 hidden sm:block" max={4}>
           <div className="relative overflow-hidden rounded-[28px] border border-line">
             <Image src={banner} alt="Shazan Ansar: AI/ML, data engineering, MLOps, data science" width={1400} height={350}
                    sizes="(min-width:1180px) 1100px, 100vw" className="h-auto w-full" />
@@ -30,26 +30,8 @@ export function People({ banner, mentorPhoto }: { banner: string; mentorPhoto?: 
         </Tilt>
 
         <div className="mt-4 grid gap-4 lg:grid-cols-12">
-          <div className="grid gap-4 lg:col-span-5">
-            {recommendations.map((r) => (
-              <figure key={r.name} className="reveal grad-ring-card relative overflow-hidden rounded-[28px] p-7 sm:p-9">
-                <Quote aria-hidden className="size-10 text-white/90" />
-                <blockquote className="mt-5 text-[clamp(1.3rem,2.2vw,1.65rem)] font-semibold leading-snug tracking-tight text-white">
-                  {r.quote}
-                </blockquote>
-                <figcaption className="mt-7 flex items-center gap-3">
-                  <span className="grid size-11 place-items-center rounded-full bg-white/15 font-bold text-white backdrop-blur">{initials(r.name)}</span>
-                  <span>
-                    <span className="block font-semibold text-white">{r.name}</span>
-                    <span className="block text-sm text-white/75">{r.title}</span>
-                    <span className="block text-xs text-white/60">{r.relation}</span>
-                  </span>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
 
-          <Tabs.Root defaultValue="collab" className="reveal card overflow-hidden lg:col-span-7" style={{ ["--d" as string]: "90ms" }}>
+          <Tabs.Root defaultValue="collab" className="reveal card overflow-hidden lg:col-span-12" style={{ ["--d" as string]: "90ms" }}>
             <Tabs.List aria-label="People" className="grid grid-cols-2 gap-1 border-b border-line p-2 sm:flex">
               {[["collab", `Collaborators · ${collaborators.length}`], ["mentor", `Mentoring · ${mentees.length}`]].map(([v, l]) => (
                 <Tabs.Trigger key={v} value={v}
@@ -60,7 +42,7 @@ export function People({ banner, mentorPhoto }: { banner: string; mentorPhoto?: 
             </Tabs.List>
 
             <Tabs.Content value="collab" className="panel-in p-4 outline-none sm:p-6">
-              <ul className="grid gap-3 sm:grid-cols-2">
+              <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {collaborators.map((p) => (
                   <li key={p.name} className="hover-lift flex gap-3.5 rounded-2xl bg-card-2 p-4">
                     <span className="grid size-12 shrink-0 place-items-center rounded-2xl text-[15px] font-bold text-white"
@@ -68,7 +50,7 @@ export function People({ banner, mentorPhoto }: { banner: string; mentorPhoto?: 
                     <span className="min-w-0">
                       <span className="block font-semibold leading-snug">{p.name}</span>
                       <span className="block text-sm text-dim">{p.role} · {p.org}</span>
-                      <span className="mt-2 flex flex-wrap gap-1">
+                      <span className="mt-2 hidden flex-wrap gap-1 sm:flex">
                         {p.work.map((w) => <span key={w} className="rounded-full border border-line px-2 py-0.5 text-[11px] text-dim">{w}</span>)}
                       </span>
                     </span>

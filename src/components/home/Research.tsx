@@ -28,7 +28,7 @@ export function Research() {
           <p className="lede">Large language models for machine translation, evaluated with care.</p>
         </div>
 
-        <ul className="mt-10 grid gap-4 lg:grid-cols-3">
+        <ul className="m-scroll mt-10 grid gap-4 lg:grid-cols-3">
           {publications.map((p, i) => {
             const photo = PHOTO[p.id] ? asset(PHOTO[p.id], "") : "";
             return (
